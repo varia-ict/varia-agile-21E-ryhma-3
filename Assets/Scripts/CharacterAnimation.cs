@@ -27,7 +27,6 @@ public class CharacterAnimation : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 10), ForceMode2D.Impulse);
             anim.SetTrigger("jump");
         }
 
