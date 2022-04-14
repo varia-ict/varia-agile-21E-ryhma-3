@@ -5,8 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed;
-    public bool gameOver;
-
+    public GameObject player;
+    private bool faceRight = false;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -16,24 +17,39 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
+        float moveX = Input.GetAxis("Horizontal"); //player moves
 
-        transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed);
+        transform.Translate(Vector2.right * moveX * Time.deltaTime * speed);
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (moveX > 0 && faceRight)
+        {
+            flip();
+        }
+        if (moveX < 0 && !faceRight)
+        {
+            flip();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space)) //player jumps
         {
             GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 10), ForceMode2D.Impulse);
         }
 
     }
-    private void OnCollisionEnter(Collision other)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        // if player collides with bomb, explode and set gameOver to true
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            gameOver = true;
-            Debug.Log("Game Over!");
-            Destroy(other.gameObject);
-        }
+        
+        
     }
+
+    void flip()
+    {
+        faceRight = !faceRight;
+        transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+    }
+
+
+    
 }
+
+
