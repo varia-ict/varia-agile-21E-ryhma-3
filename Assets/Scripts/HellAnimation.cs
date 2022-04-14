@@ -6,6 +6,7 @@ public class HellAnimation : MonoBehaviour
 {
     private Animator anim;
     public float speed = 3;
+    private float leftBound = -14;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,10 @@ public class HellAnimation : MonoBehaviour
     {
         transform.Translate(Vector3.left * Time.deltaTime * speed);
         anim.SetBool("isFlying", true);
+
+
+        if (transform.position.x < leftBound)
+            Destroy(gameObject); 
 
     }
 

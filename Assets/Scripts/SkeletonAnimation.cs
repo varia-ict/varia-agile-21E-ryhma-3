@@ -8,6 +8,8 @@ public class SkeletonAnimation : MonoBehaviour
     public float speed = 3;
     private int currentTarget;
     public Vector3[] positions;
+    private float leftBound = -14;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,11 @@ public class SkeletonAnimation : MonoBehaviour
     {
         transform.Translate(Vector3.left * Time.deltaTime * speed);
         anim.SetBool("isWalking", true);
+
+        if (transform.position.x < leftBound)
+        {
+            Destroy(gameObject);
+        }
 
     }
 
