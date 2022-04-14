@@ -30,7 +30,7 @@ public class CharacterAnimation : MonoBehaviour
             anim.SetTrigger("jump");
         }
 
-        if (Input.GetKey(KeyCode.F))
+        if (Input.GetKey(KeyCode.A))
         {
             anim.SetTrigger("Attack");
         }
