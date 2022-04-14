@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,8 @@ using UnityEngine;
 public class CharacterAnimation : MonoBehaviour
 {
     private Animator anim;
-    
+    public long startAtackTime = 0;
+
 
 
     // Start is called before the first frame update
@@ -29,10 +31,33 @@ public class CharacterAnimation : MonoBehaviour
         {
             anim.SetTrigger("jump");
         }
-
         if (Input.GetKey(KeyCode.G))
         {
             anim.SetTrigger("Attack");
+            startAtackTime = DateTimeOffset.Now.ToUnixTimeMilliseconds();
         }
+
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Attack");
+
+        if (collision.gameObject.tag == "Enemy")
+        {
+            var time = DateTimeOffset.Now.ToUnixTimeMilliseconds();
+            if (startAtackTime - time > -500)
+            {
+                Destroy(collision.gameObject);
+            }
+            //else
+            //{
+            //    anim.SetTrigger("Death");
+            //}
+
+
+        }
+
+    }
+
 }
