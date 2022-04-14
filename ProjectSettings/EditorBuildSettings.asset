@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Village_Scene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Graveyard_Scene.unity
+    guid: 412a1be763f3c4c5e876c7bb97d0162e
   m_configObjects: {}
