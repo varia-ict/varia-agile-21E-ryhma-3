@@ -7,7 +7,10 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public GameObject player;
     private bool faceRight = false;
-    
+    private Animator anim;
+    public bool inAtackMode;
+    public long startAtackTime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,21 +39,14 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        
-        
-    }
 
     void flip()
     {
         faceRight = !faceRight;
         transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-        
+
     }
 
-
-    
 }
 
 

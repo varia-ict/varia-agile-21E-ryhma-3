@@ -81,7 +81,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 7
   player: {fileID: 1355603041121516657}
-  sword: {fileID: 7093258045838947510, guid: 42760e4a816d1416ea3023cfb15e5eac, type: 3}
+  IsGameActive: 0
 --- !u!212 &1355603041121516656
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -164,7 +164,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.033544183}
