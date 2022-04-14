@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
     {
         faceRight = !faceRight;
         transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+        
     }
 
 
