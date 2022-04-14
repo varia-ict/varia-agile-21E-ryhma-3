@@ -6,9 +6,8 @@ public class SkeletonAnimation : MonoBehaviour
 {
     private Animator anim;
     public float speed = 3;
-    private int currentTarget;
-    public Vector3[] positions;
     private float leftBound = -14;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -29,12 +28,5 @@ public class SkeletonAnimation : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            Destroy(gameObject);
-            anim.SetTrigger("death");
-        }
-    }
+    
 }
