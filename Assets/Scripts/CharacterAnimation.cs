@@ -50,10 +50,10 @@ public class CharacterAnimation : MonoBehaviour
             {
                 Destroy(collision.gameObject);
             }
-            //else
-            //{
-            //    anim.SetTrigger("Death");
-            //}
+            else
+            {
+                Destroy(gameObject);
+            }
 
 
         }
