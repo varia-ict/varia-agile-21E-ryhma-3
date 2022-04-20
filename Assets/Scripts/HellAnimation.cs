@@ -23,6 +23,11 @@ public class HellAnimation : MonoBehaviour
         transform.Translate(Vector3.left * Time.deltaTime * speed);
         anim.SetBool("isFlying", true);
 
+        if(enemyHealth <= 0)
+        {
+            anim.SetTrigger("HellDeath");
+        }
+
 
         if (transform.position.x < leftBound)
         {
