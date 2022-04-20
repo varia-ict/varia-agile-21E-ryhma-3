@@ -7,11 +7,14 @@ public class HellAnimation : MonoBehaviour
     private Animator anim;
     public float speed = 3;
     private float leftBound = -14;
+    public int enemyHealth = 100;
+
 
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
@@ -22,10 +25,18 @@ public class HellAnimation : MonoBehaviour
 
 
         if (transform.position.x < leftBound)
-            Destroy(gameObject); 
+        {
+            Destroy(gameObject);
+        }
 
-    }
-
+        }
     
+
 }
 
+
+
+
+    
+    
+        
