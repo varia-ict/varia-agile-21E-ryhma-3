@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 6173887353817977454}
   - component: {fileID: 4236181989891368221}
   - component: {fileID: 8251881611048924422}
-  - component: {fileID: 3319722579601872842}
   - component: {fileID: 2325295372607522009}
+  - component: {fileID: 3319722579601872842}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Enemy
@@ -111,19 +111,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3319722579601872842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6724167421943471745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7c8252de754b43f3a41db54ed020d31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
 --- !u!95 &2325295372607522009
 Animator:
   serializedVersion: 3
@@ -143,3 +130,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3319722579601872842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6724167421943471745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7c8252de754b43f3a41db54ed020d31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2

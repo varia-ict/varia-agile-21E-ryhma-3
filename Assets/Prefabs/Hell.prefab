@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 595410592906088971}
   - component: {fileID: 595410592906088968}
   - component: {fileID: 595410592906088969}
-  - component: {fileID: 595410592906088970}
   - component: {fileID: -5387398414479479328}
+  - component: {fileID: 595410592906088970}
   m_Layer: 0
   m_Name: Hell
   m_TagString: Enemy
@@ -104,19 +104,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &595410592906088970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 595410592906088966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16e803be7cc60449cadf15fddf60a51b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
 --- !u!61 &-5387398414479479328
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -143,3 +130,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.653316, y: 0.46143925}
   m_EdgeRadius: 0
+--- !u!114 &595410592906088970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595410592906088966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16e803be7cc60449cadf15fddf60a51b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  enemyHealth: 100

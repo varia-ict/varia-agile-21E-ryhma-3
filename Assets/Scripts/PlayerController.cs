@@ -5,24 +5,34 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed;
-    public GameObject player;
+    public float jumpForce;
     private bool faceRight = false;
-    private Animator anim;
     public bool inAtackMode;
     public long startAtackTime;
+
+    private Rigidbody2D rb;
+    private bool isGrounded;
+    public Transform groundCheck; //checking the ground
+    public float checkRadius;
+    public LayerMask whatIsGround;
+
+    private int extraJumps;
+    public int extraJumpValue;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        extraJumps = extraJumpValue;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        float moveX = Input.GetAxis("Horizontal"); //player moves
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
 
-        transform.Translate(Vector2.right * moveX * Time.deltaTime * speed);
+        float moveX = Input.GetAxis("Horizontal"); //player moves
+        rb.velocity = new Vector2(moveX * speed, rb.velocity.y);
 
         if (moveX > 0 && faceRight)
         {
@@ -33,11 +43,24 @@ public class PlayerController : MonoBehaviour
             flip();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space)) //player jumps
+        
+    }
+
+    private void Update()
+    {
+        if(isGrounded == true)
         {
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 10), ForceMode2D.Impulse);
+            extraJumps = extraJumpValue;
         }
 
+        if (Input.GetKeyDown(KeyCode.Space) && extraJumps > 0) //player jumps
+        {
+            rb.velocity = Vector2.up * jumpForce;
+        }
+        else if (Input.GetKeyDown(KeyCode.Space) && extraJumps == 0 && isGrounded == true)
+        {
+            rb.velocity = Vector2.up * jumpForce;
+        }
     }
 
     void flip()
@@ -47,6 +70,14 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter2D(Collider2D collision) //pick up
+    {
+
+        if (collision.gameObject.tag == "PickUp")
+        {
+            Destroy(collision.gameObject);
+        }
+    }
 }
 
 

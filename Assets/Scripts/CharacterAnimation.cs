@@ -7,17 +7,17 @@ public class CharacterAnimation : MonoBehaviour
 {
     private Animator anim;
     public long startAtackTime = 0;
-    private HellAnimation hellAnimationScript;
-    private float health;
-   
+    //private HellAnimation hellAnimationScript;
+    public int enemyHealth = 100;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
-        hellAnimationScript = GameObject.Find("HellAnimation").GetComponent<HellAnimation>();
-        health = hellAnimationScript.enemyHealth;
+        //hellAnimationScript = GameObject.Find("HellAnimation").GetComponent<HellAnimation>();
+
     }
 
     // Update is called once per frame
@@ -43,7 +43,7 @@ public class CharacterAnimation : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision) //attacking enemies
     {
         Debug.Log("Attack");
 
@@ -52,15 +52,22 @@ public class CharacterAnimation : MonoBehaviour
             var time = DateTimeOffset.Now.ToUnixTimeMilliseconds();
             if (startAtackTime - time > -500)
             {
-                health = 0;
-                Destroy(collision.gameObject);
+                enemyHealth = 0;
+                var hellAnimator = collision.gameObject.GetComponent<HellAnimation>();
+                if (hellAnimator != null)
+                {
+                    hellAnimator.KillWithAnimation();
+                }
+                else
+                {
+                    Destroy(collision.gameObject);
+                }
+
             }
             else
             {
                 Destroy(gameObject);
             }
-
-
         }
 
     }

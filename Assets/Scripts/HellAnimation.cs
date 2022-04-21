@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HellAnimation : MonoBehaviour
 {
-    private Animator anim;
+    private Animator enemyAnim;
     public float speed = 3;
     private float leftBound = -14;
     public int enemyHealth = 100;
@@ -13,20 +13,14 @@ public class HellAnimation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        anim = GetComponent<Animator>();
-        
+        enemyAnim = GetComponent<Animator>();     
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.Translate(Vector3.left * Time.deltaTime * speed);
-        anim.SetBool("isFlying", true);
-
-        if(enemyHealth <= 0)
-        {
-            anim.SetTrigger("HellDeath");
-        }
+        enemyAnim.SetBool("isWalking", true);
 
 
         if (transform.position.x < leftBound)
@@ -34,7 +28,14 @@ public class HellAnimation : MonoBehaviour
             Destroy(gameObject);
         }
 
-        }
+    }
+
+    public void KillWithAnimation() {
+        Debug.Log("startDeath animation");
+        enemyAnim.SetTrigger("death");
+        speed = 0;
+        Destroy(this.gameObject, 0);
+    }
     
 
 }

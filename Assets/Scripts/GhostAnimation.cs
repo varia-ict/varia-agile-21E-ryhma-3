@@ -19,7 +19,7 @@ public class GhostAnimation : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.right * Time.deltaTime * speed);
-        anim.SetBool("isWalk", true);
+        anim.SetBool("isWalking", true);
 
         if (transform.position.x > rightBound)
         {
