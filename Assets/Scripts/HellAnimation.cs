@@ -8,20 +8,22 @@ public class HellAnimation : MonoBehaviour
     public float speed = 3;
     private float leftBound = -14;
     public int enemyHealth = 100;
-
+    bool dead;
 
     // Start is called before the first frame update
     void Start()
     {
         enemyAnim = GetComponent<Animator>();     
+        enemyAnim.SetBool("isWalking", true);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.left * Time.deltaTime * speed);
-        enemyAnim.SetBool("isWalking", true);
-
+        if (!dead)
+        {
+            transform.Translate(Vector3.left * Time.deltaTime * speed);
+        }
 
         if (transform.position.x < leftBound)
         {
@@ -30,13 +32,21 @@ public class HellAnimation : MonoBehaviour
 
     }
 
-    public void KillWithAnimation() {
-        Debug.Log("startDeath animation");
-        enemyAnim.SetTrigger("death");
-        speed = 0;
-        Destroy(this.gameObject, 0);
+
+
+    public void KillWithAnimation()
+    {
+        if (!dead)
+        {
+            dead = true;
+            //    enemyAnim.SetTrigger("death");
+            //    Destroy(gameObject);
+            //}
+            Debug.Log("startDeath animation");
+            enemyAnim.SetBool("death", true);
+            Destroy(this.gameObject, 5);
+        }
     }
-    
 
 }
 
