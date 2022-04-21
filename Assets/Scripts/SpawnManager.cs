@@ -20,16 +20,13 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            SpawnRandomEnemies();
-        }
+        
     }
 
     void SpawnRandomEnemies()
     {
         int enemiesIndex = Random.Range(0, enemiesPrefabs.Length);
-        Vector3 spawnPos = new Vector3(Random.Range( 0, spawnRangeX), 0, spawnPosY);
+        Vector3 spawnPos = new Vector3(Random.Range( 0, spawnRangeX), -0.2f, spawnPosY);
 
         Instantiate(enemiesPrefabs[enemiesIndex], spawnPos, enemiesPrefabs[enemiesIndex].transform.rotation);
 
