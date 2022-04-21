@@ -8,7 +8,7 @@ public class SceneSwitchWheat : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
 
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
 
     }
 }
