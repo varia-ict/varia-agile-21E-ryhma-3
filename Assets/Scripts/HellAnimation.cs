@@ -39,9 +39,6 @@ public class HellAnimation : MonoBehaviour
         if (!dead)
         {
             dead = true;
-            //    enemyAnim.SetTrigger("death");
-            //    Destroy(gameObject);
-            //}
             Debug.Log("startDeath animation");
             enemyAnim.SetBool("death", true);
             Destroy(this.gameObject, 5);
