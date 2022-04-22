@@ -47,39 +47,23 @@ public class CharacterAnimation : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemy")
         {
-            var time = DateTimeOffset.Now.ToUnixTimeMilliseconds();
+            var time = DateTimeOffset.Now.ToUnixTimeMilliseconds(); //play enemies death animation after killing
             if (startAtackTime - time > -500)
             {
-                var hellAnimator = collision.gameObject.GetComponent<HellAnimation>();
-                if (hellAnimator != null)
+                var hellSkeletonAnimator = collision.gameObject.GetComponent<HellSkeletonAnim>();
+                if (hellSkeletonAnimator != null)
                 {
-                    hellAnimator.KillWithAnimation();
+                    hellSkeletonAnimator.KillWithAnimation();
                 }
-                //else
-                //{
-                //    Destroy(collision.gameObject);
-                //}
+               
                 var ghostAnimator = collision.gameObject.GetComponent<GhostAnimation>();
                 if(ghostAnimator != null)
                 {
                     ghostAnimator.KillWithAnimation();
                 }
-                //else
-                //{
-                //    Destroy(collision.gameObject);
-                //}
-                var skeletonAnimator = collision.gameObject.GetComponent<SkeletonAnimation>();
-                if(skeletonAnimator != null)
-                {
-                    skeletonAnimator.KillWithAnimation();
-                }
-                //else
-                //{
-                //    Destroy(collision.gameObject);
-                //}
 
             }
-            else
+            else //kill the player if it didn't attack
             {
                 Destroy(gameObject);
             }

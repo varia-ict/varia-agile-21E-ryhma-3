@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2386593298015611134}
   - component: {fileID: 2386593298015611135}
   - component: {fileID: 2386593298015611133}
-  - component: {fileID: 2386593298015611128}
+  - component: {fileID: 1615174188192913284}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Enemy
@@ -130,7 +130,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2386593298015611128
+--- !u!114 &1615174188192913284
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2386593298015611074}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e37614cd4779c4558838b2b2c8e3c73a, type: 3}
+  m_Script: {fileID: 11500000, guid: 32588b148b1c24131b1411787e9d8b9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1

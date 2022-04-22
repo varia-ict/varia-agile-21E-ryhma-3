@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkeletonAnimation : MonoBehaviour
+public class HellSkeletonAnim : MonoBehaviour
 {
     private Animator enemyAnim;
     public float speed = 3;
@@ -31,16 +31,15 @@ public class SkeletonAnimation : MonoBehaviour
 
     }
 
-    public void KillWithAnimation()
+    public void KillWithAnimation() //death animation
     {
         if (!dead)
         {
             dead = true;
             Debug.Log("startDeath animation");
             enemyAnim.SetBool("death", true);
-            Destroy(this.gameObject, 5);
+            Destroy(this.gameObject, 3);
         }
     }
-
 
 }

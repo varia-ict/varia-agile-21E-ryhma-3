@@ -30,14 +30,14 @@ public class GhostAnimation : MonoBehaviour
         }
     }
 
-    public void KillWithAnimation()
+    public void KillWithAnimation() //death animation
     {
         if (!dead)
         {
             dead = true;
             Debug.Log("startDeath animation");
             enemyAnim.SetBool("death", true);
-            Destroy(this.gameObject, 5);
+            Destroy(this.gameObject, 3);
         }
     }
 
