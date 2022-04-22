@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,7 +19,9 @@ public class PlayerController : MonoBehaviour
 
     private int extraJumps;
     public int extraJumpValue;
-
+    private int coins = 0;
+    [SerializeField] private Text coinsText;
+    public AudioClip coinsSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -75,6 +78,10 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.tag == "PickUp")
         {
+           
+            coins++;
+            coinsText.text = "Coins: " + coins;
+            AudioSource.PlayClipAtPoint(coinsSound, transform.position);
             Destroy(collision.gameObject);
         }
     }
