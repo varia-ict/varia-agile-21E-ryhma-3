@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 131400463764941984}
   - component: {fileID: 131400463764941985}
   - component: {fileID: 131400463764941991}
+  - component: {fileID: 3676392653081259120}
   m_Layer: 0
   m_Name: gem-1
   m_TagString: PickUp
@@ -109,3 +110,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.15, y: 0.13}
   m_EdgeRadius: 0
+--- !u!114 &3676392653081259120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131400463764941986}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 877e7565758b8412980d2e147e6e3fe7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointValue: 1
+  coinsSound: {fileID: 8300000, guid: b5337e4c0db1645319c0ea9f969ea42c, type: 3}

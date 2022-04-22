@@ -7,9 +7,12 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public TextMeshProUGUI scoreText;
     public bool isGameActive;
     public GameObject startingMenu;
     private Button button;
+    private int score;
+
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +21,8 @@ public class GameManager : MonoBehaviour
         button = GetComponent<Button>();
         button.onClick.AddListener(SelectStartingMenu);
         startingMenu.gameObject.SetActive(false);
-
+        score = 0;
+        UpdateScore(0);
     }
 
     void SelectStartingMenu()
@@ -32,11 +36,9 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-
-
-    // Update is called once per frame
-    void Update()
+    public void UpdateScore(int scoreToAdd)
     {
-        
+        score += scoreToAdd;
+        scoreText.text = "Score:" + score;
     }
 }

@@ -19,14 +19,17 @@ public class PlayerController : MonoBehaviour
 
     private int extraJumps;
     public int extraJumpValue;
-    private int coins = 0;
-    [SerializeField] private Text coinsText;
     public AudioClip coinsSound;
+    //private GameManager gameManager;
+    //public int pointValue;
+    //public GameObject diamond;
+
     // Start is called before the first frame update
     void Start()
     {
         extraJumps = extraJumpValue;
         rb = GetComponent<Rigidbody2D>();
+        //gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -73,18 +76,16 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) //pick up
-    {
+    //    private void OnTriggerEnter2D(Collider2D collision) //pick up
+    //    {
 
-        if (collision.gameObject.tag == "PickUp")
-        {
-           
-            coins++;
-            coinsText.text = "Coins: " + coins;
-            AudioSource.PlayClipAtPoint(coinsSound, transform.position);
-            Destroy(collision.gameObject);
-        }
-    }
+    //        if (collision.gameObject.tag == "PickUp")
+    //        {
+    //            AudioSource.PlayClipAtPoint(coinsSound, transform.position);
+    //            Destroy(collision.gameObject);
+    //            gameManager.UpdateScore(pointValue);
+    //        }
+    //    }
 }
 
 
