@@ -7,7 +7,7 @@ public class GhostAnimation : MonoBehaviour
     private Animator enemyAnim;
     public float speed = 2;
     private float rightBound = 50;
-    bool dead;    
+    bool dead;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +37,7 @@ public class GhostAnimation : MonoBehaviour
             dead = true;
             Debug.Log("startDeath animation");
             enemyAnim.SetBool("death", true);
-            Destroy(this.gameObject, 3);
+            Destroy(this.gameObject, 1);
         }
     }
 

@@ -9,6 +9,7 @@ public class HellSkeletonAnim : MonoBehaviour
     private float leftBound = -14;
     bool dead;
 
+
     // Start is called before the first frame update
     void Start()
     {
