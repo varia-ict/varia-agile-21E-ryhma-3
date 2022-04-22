@@ -10712,6 +10712,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startAtackTime: 0
+  playerAudio: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: 3b660bb267a59364f9df9c13f8760e98, type: 3}
 --- !u!95 &1140302260
 Animator:
   serializedVersion: 3
@@ -10765,7 +10767,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1140302256}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.07, y: -0.109, z: 0}
+  m_LocalPosition: {x: -17.77, y: -0.109, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 519420032}

@@ -7,15 +7,15 @@ public class CharacterAnimation : MonoBehaviour
 {
     private Animator anim;
     public long startAtackTime = 0;
-    
-
+    public AudioSource playerAudio;
+    public AudioClip deathSound;
 
 
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
-        
+        playerAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -54,12 +54,14 @@ public class CharacterAnimation : MonoBehaviour
                 if (hellSkeletonAnimator != null)
                 {
                     hellSkeletonAnimator.KillWithAnimation();
+                    AudioSource.PlayClipAtPoint(deathSound, transform.position);
                 }
                
                 var ghostAnimator = collision.gameObject.GetComponent<GhostAnimation>();
                 if(ghostAnimator != null)
                 {
                     ghostAnimator.KillWithAnimation();
+                    AudioSource.PlayClipAtPoint(deathSound, transform.position);
                 }
 
             }

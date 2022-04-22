@@ -143,3 +143,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  deathSound: {fileID: 8300000, guid: fa641fa871d49ec42a43e3f73bfdbf72, type: 3}
