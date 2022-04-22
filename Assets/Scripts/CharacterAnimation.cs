@@ -56,21 +56,24 @@ public class CharacterAnimation : MonoBehaviour
                     hellSkeletonAnimator.KillWithAnimation();
                     AudioSource.PlayClipAtPoint(deathSound, transform.position);
                 }
-               
+            }
+            var time2 = DateTimeOffset.Now.ToUnixTimeMilliseconds(); //play enemies death animation after killing
+            if (startAtackTime - time2 > -500)
+                {
                 var ghostAnimator = collision.gameObject.GetComponent<GhostAnimation>();
-                if(ghostAnimator != null)
+                if (ghostAnimator != null)
                 {
                     ghostAnimator.KillWithAnimation();
                     AudioSource.PlayClipAtPoint(deathSound, transform.position);
                 }
 
-            }
-            else //kill the player if it didn't attack
-            {
-                Destroy(gameObject);
-            }
+                }
+        else //kill the player if it didn't attack
+        {
+          Destroy(gameObject);
+        }
         }
 
     }
 
-}
+    }
