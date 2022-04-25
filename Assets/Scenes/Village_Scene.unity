@@ -10541,8 +10541,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1ec01e737bbd4c969e74bca59ba356e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startAtackTime: 0
-  playerAudio: {fileID: 0}
+  anim: {fileID: 1140302260}
+  atackDurationTime: 350
+  atackCooldownTime: 500
+  playerAudio: {fileID: 1140302264}
   deathSound: {fileID: 8300000, guid: fa641fa871d49ec42a43e3f73bfdbf72, type: 3}
 --- !u!95 &1140302260
 Animator:

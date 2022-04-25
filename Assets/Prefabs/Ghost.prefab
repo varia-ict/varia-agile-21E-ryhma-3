@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4236181989891368221}
   - component: {fileID: 8251881611048924422}
   - component: {fileID: 2325295372607522009}
-  - component: {fileID: 3319722579601872842}
+  - component: {fileID: -4234794608079269793}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Enemy
@@ -130,7 +130,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3319722579601872842
+--- !u!114 &-4234794608079269793
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,7 +139,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6724167421943471745}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7c8252de754b43f3a41db54ed020d31, type: 3}
+  m_Script: {fileID: 11500000, guid: 85d4a041c34284dd1bf006808461fdc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  enemyAnim: {fileID: 2325295372607522009}
+  speed: 1
+  rightDirectionFlag: 1

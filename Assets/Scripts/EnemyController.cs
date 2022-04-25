@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GhostAnimation : MonoBehaviour
+public class EnemyController : MonoBehaviour
 {
-    private Animator enemyAnim;
+    public Animator enemyAnim;
     public float speed = 2;
     private float rightBound = 50;
     bool dead;
+    public bool rightDirectionFlag = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        enemyAnim = GetComponent<Animator>();
         enemyAnim.SetBool("isWalking", true);
     }
 
@@ -21,12 +21,13 @@ public class GhostAnimation : MonoBehaviour
     {
         if (!dead)
         {
-            transform.Translate(Vector3.right * Time.deltaTime * speed);
+            var directionVector = rightDirectionFlag ? Vector3.right : Vector3.left;
+            transform.Translate(directionVector * Time.deltaTime * speed);
         }
-     
+
         if (transform.position.x > rightBound)
         {
-            Destroy(gameObject); 
+            Destroy(gameObject);
         }
     }
 
@@ -40,6 +41,5 @@ public class GhostAnimation : MonoBehaviour
             Destroy(this.gameObject, 1);
         }
     }
-
 
 }

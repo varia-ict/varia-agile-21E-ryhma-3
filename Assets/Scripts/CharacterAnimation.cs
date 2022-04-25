@@ -1,23 +1,19 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [System.Diagnostics.DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
 public class CharacterAnimation : MonoBehaviour
 {
-    private Animator anim;
-    public long startAtackTime = 0;
+    public Animator anim;
+    private long startAtackTime = 0;
+    public long atackDurationTime = 100;
+    public long atackCooldownTime = 150;
     public AudioSource playerAudio;
     public AudioClip deathSound;
-    bool canAttack;
 
     // Start is called before the first frame update
     void Start()
     {
-        canAttack = false;
-        anim = GetComponent<Animator>();
-        playerAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -37,8 +33,12 @@ public class CharacterAnimation : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.G))
         {
-            anim.SetTrigger("Attack");
-            startAtackTime = DateTimeOffset.Now.ToUnixTimeMilliseconds();
+            var time = DateTimeOffset.Now.ToUnixTimeMilliseconds();
+            if(time >= startAtackTime + atackCooldownTime)
+            {
+                anim.SetTrigger("Attack");
+                startAtackTime = DateTimeOffset.Now.ToUnixTimeMilliseconds();
+            }
         }
 
     }
@@ -53,25 +53,14 @@ public class CharacterAnimation : MonoBehaviour
             return;
         }
         var time = DateTimeOffset.Now.ToUnixTimeMilliseconds(); //play enemies death animation after killing
-        if (startAtackTime - time > -500)
+        if (startAtackTime - time > -atackDurationTime)
         {
-            var hellSkeletonAnimator = collision.gameObject.GetComponent<HellSkeletonAnim>();
-            if (hellSkeletonAnimator != null)
+            var enemyController = collision.gameObject.GetComponent<EnemyController>();
+            if (enemyController != null)
             {
-                hellSkeletonAnimator.KillWithAnimation();
+                enemyController.KillWithAnimation();
                 AudioSource.PlayClipAtPoint(deathSound, transform.position);
             }
-        }
-        var time2 = DateTimeOffset.Now.ToUnixTimeMilliseconds(); //play enemies death animation after killing
-        if (startAtackTime - time2 > -500)
-        {
-            var ghostAnimator = collision.gameObject.GetComponent<GhostAnimation>();
-            if (ghostAnimator != null)
-            {
-                ghostAnimator.KillWithAnimation();
-                AudioSource.PlayClipAtPoint(deathSound, transform.position);
-            }
-
         }
         else //kill the player if it didn't attack
         {
