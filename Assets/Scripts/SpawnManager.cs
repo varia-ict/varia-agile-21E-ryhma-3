@@ -5,26 +5,18 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public GameObject[] enemiesPrefabs;
-    public float spawnRangeX = 40;
+    public float spawnRangeX = 77;
     public float spawnPosY = -0.24f;
-    private float startDelay = 2;
-    private float spawnInterval = 1.5f;
+    private float spawnDelay = 3;
+    private float spawnInterval = 3f;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnRandomEnemies", startDelay, spawnInterval);
+        InvokeRepeating("SpawnRandomEnemies", spawnDelay, spawnInterval);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            SpawnRandomEnemies();
-        }
-    }
 
     void SpawnRandomEnemies()
     {
