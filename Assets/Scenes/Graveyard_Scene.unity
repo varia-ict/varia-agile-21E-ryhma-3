@@ -8750,7 +8750,7 @@ MonoBehaviour:
   - {fileID: 595410592906088966, guid: 139a5d8bbe1fc40949509d764afc2135, type: 3}
   - {fileID: 6724167421943471745, guid: aaf5266561c5b43d0ab471c4429487da, type: 3}
   - {fileID: 2386593298015611074, guid: 664a6df5c0501494283a0f9a641fa156, type: 3}
-  spawnRangeX: 25
+  spawnRangeX: 99
   spawnPosY: -2.74
 --- !u!4 &1600515639
 Transform:

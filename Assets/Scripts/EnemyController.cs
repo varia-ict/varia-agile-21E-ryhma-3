@@ -6,7 +6,8 @@ public class EnemyController : MonoBehaviour
 {
     public Animator enemyAnim;
     public float speed = 2;
-    private float rightBound = 50;
+    private float rightBound = 100;
+    private float leftBound = - 100;
     bool dead;
     public bool rightDirectionFlag = false;
 
@@ -28,6 +29,10 @@ public class EnemyController : MonoBehaviour
         if (transform.position.x > rightBound)
         {
             Destroy(gameObject);
+        }
+        if (transform.position.x < leftBound)
+        {
+                Destroy(gameObject);
         }
     }
 
