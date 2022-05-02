@@ -15,4 +15,10 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Village_Scene");
     }
+
+    public void ContinueGame()
+    {
+        SceneManager.LoadScene("GameScene2");
+    }
 }
+
