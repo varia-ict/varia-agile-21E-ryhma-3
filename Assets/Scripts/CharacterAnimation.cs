@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +11,7 @@ public class CharacterAnimation : MonoBehaviour
     public Animator anim;
     public AudioSource playerAudio;
     public AudioClip deathSound;
-
+    new readonly Renderer renderer;
     private long startAtackTime = 0;
     public long atackDurationTime = 100;
     public long atackCooldownTime = 150;
@@ -72,8 +73,25 @@ public class CharacterAnimation : MonoBehaviour
         else //kill the player if it didn't attack
         {
             livesText.text = " x " + (lives -1);
+            BlinkPlayer();
             //Destroy(gameObject);
         }
+    }
+
+    void BlinkPlayer()//to make Player blink when it collides with enemies
+    {
+        StartCoroutine(DoBlinks(3f, 0.2f));
+    }
+
+    IEnumerator DoBlinks(float duration, float blinkTime)
+    {
+        while (duration > 0f)
+        {
+            duration -= Time.deltaTime;
+            renderer.enabled = !renderer.enabled;
+            yield return new WaitForSeconds(blinkTime);
+        }
+        renderer.enabled = true;
     }
 
     private string GetDebuggerDisplay()
