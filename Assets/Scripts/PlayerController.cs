@@ -5,23 +5,29 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+   
+    private Rigidbody2D rb;
+    public Transform groundCheck; //checking the ground
+    public LayerMask whatIsGround;
+    [SerializeField] private Sprite[] pickupSprites;
+    [SerializeField] private Text scoreText;
+    public ImageEffectAllowedInSceneView GetImage;
+    public AudioClip coinsSound;
+
     public float speed;
     public float jumpForce;
-    private bool faceRight = false;
-    public bool inAtackMode;
+    public float checkRadius;
+
     public long startAtackTime;
 
-    private Rigidbody2D rb;
     private bool isGrounded;
-    public Transform groundCheck; //checking the ground
-    public float checkRadius;
-    public LayerMask whatIsGround;
+    private bool faceRight = false;
+    public bool inAtackMode;
 
     private int extraJumps;
     public int extraJumpValue;
-    private int coins = 0;
-    [SerializeField] private Text coinsText;
-    public AudioClip coinsSound;
+    private int pickup = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -79,9 +85,8 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.tag == "PickUp")
         {
-           
-            coins++;
-            coinsText.text = "Coins: " + coins;
+            pickup++;
+            scoreText.text = " x " + pickup;
             AudioSource.PlayClipAtPoint(coinsSound, transform.position);
             Destroy(collision.gameObject);
         }

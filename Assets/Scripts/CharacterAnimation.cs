@@ -1,19 +1,26 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Diagnostics.DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
 public class CharacterAnimation : MonoBehaviour
 {
+    [SerializeField] private Sprite[] liveSprites;
+    [SerializeField] private Text livesText;
     public Animator anim;
+    public AudioSource playerAudio;
+    public AudioClip deathSound;
+
     private long startAtackTime = 0;
     public long atackDurationTime = 100;
     public long atackCooldownTime = 150;
-    public AudioSource playerAudio;
-    public AudioClip deathSound;
+
+    private int lives = 3;
 
     // Start is called before the first frame update
     void Start()
     {
+        livesText.text = " x " + lives;
     }
 
     // Update is called once per frame
@@ -64,7 +71,8 @@ public class CharacterAnimation : MonoBehaviour
         }
         else //kill the player if it didn't attack
         {
-            Destroy(gameObject);
+            livesText.text = " x " + (lives -1);
+            //Destroy(gameObject);
         }
     }
 
