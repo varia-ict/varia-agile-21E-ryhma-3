@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    private GameManager gameManager;
     public GameObject[] enemiesPrefabs;
     public float spawnRangeX1 = 93;
     public float spawnRangeX2 = 18;
@@ -17,6 +18,7 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         InvokeRepeating("SpawnRandomEnemies", spawnDelay, spawnInterval);
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
 
@@ -25,7 +27,11 @@ public class SpawnManager : MonoBehaviour
         int enemiesIndex = Random.Range(0, enemiesPrefabs.Length);
         Vector3 spawnPos = new Vector3(Random.Range( spawnRangeX2, spawnRangeX1), spawnPosY);
 
-        Instantiate(enemiesPrefabs[enemiesIndex], spawnPos, enemiesPrefabs[enemiesIndex].transform.rotation);
+        if (gameManager.isGameActive)
+        {
+            Instantiate(enemiesPrefabs[enemiesIndex], spawnPos, enemiesPrefabs[enemiesIndex].transform.rotation);
+        }
+        
 
     }
 }

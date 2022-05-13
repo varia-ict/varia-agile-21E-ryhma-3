@@ -8,6 +8,8 @@ public class CharacterAnimation : MonoBehaviour
 {
     [SerializeField] private Sprite[] liveSprites;
     [SerializeField] private Text livesText;
+    private GameManager gameManager;
+    public GameObject player;
     public Animator anim;
     public AudioSource playerAudio;
     public AudioClip deathSound;
@@ -16,11 +18,21 @@ public class CharacterAnimation : MonoBehaviour
     public long atackDurationTime = 100;
     public long atackCooldownTime = 150;
 
+    public float blinkTime = 0.1f;
+
     private int lives = 3;
+
+    private Material matBlink;
+    private Material matDefault;
+    private SpriteRenderer spriteRend;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        spriteRend = GetComponent<SpriteRenderer>();
+        matBlink = Resources.Load("PlayerBlink", typeof(Material)) as Material;
+        matDefault = spriteRend.material;
         livesText.text = " x " + lives;
     }
 
@@ -70,34 +82,35 @@ public class CharacterAnimation : MonoBehaviour
                 AudioSource.PlayClipAtPoint(deathSound, transform.position);
             }
         }
-        else //kill the player if it didn't attack
+        else //collides with enemies without attack
         {
-            livesText.text = " x " + (lives -1);
-            BlinkPlayer();
-            //Destroy(gameObject);
+            lives--;
+            spriteRend.material = matBlink;
+            livesText.text = " x " + lives;
+            
+            if(lives <= 0)
+            {
+                gameManager.isGameActive = false;
+                gameManager.GameOver();
+            }
+            else
+            {
+                Invoke("ResetMaterial", 0.1f);
+            }
         }
     }
 
-    void BlinkPlayer()//to make Player blink when it collides with enemies
+   
+    void ResetMaterial()
     {
-        StartCoroutine(DoBlinks(3f, 0.2f));
-    }
-
-    IEnumerator DoBlinks(float duration, float blinkTime)
-    {
-        while (duration > 0f)
-        {
-            duration -= Time.deltaTime;
-            renderer.enabled = !renderer.enabled;
-            yield return new WaitForSeconds(blinkTime);
-        }
-        renderer.enabled = true;
+        spriteRend.material = matDefault;
     }
 
     private string GetDebuggerDisplay()
     {
         return ToString();
     }
+
 }
 
 

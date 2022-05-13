@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    private GameManager gameManager;
     public Animator enemyAnim;
     public float speed = 2;
     private float rightBound = 100;
@@ -15,12 +16,13 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         enemyAnim.SetBool("isWalking", true);
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!dead)
+        if (!dead && gameManager.isGameActive)
         {
             var directionVector = rightDirectionFlag ? Vector3.right : Vector3.left;
             transform.Translate(directionVector * Time.deltaTime * speed);

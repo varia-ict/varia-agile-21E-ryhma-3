@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-   
+    private GameManager gameManager;
     private Rigidbody2D rb;
     public Transform groundCheck; //checking the ground
     public LayerMask whatIsGround;
@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Text scoreText;
     public ImageEffectAllowedInSceneView GetImage;
     public AudioClip coinsSound;
+
 
     public float speed;
     public float jumpForce;
@@ -33,6 +34,7 @@ public class PlayerController : MonoBehaviour
     {
         extraJumps = extraJumpValue;
         rb = GetComponent<Rigidbody2D>();
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -57,7 +59,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if(isGrounded == true)
+        if(isGrounded == true && gameManager.isGameActive)
         {
             extraJumps = extraJumpValue;
         }

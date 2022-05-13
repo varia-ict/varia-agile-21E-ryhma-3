@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public bool isGameActive;
     public GameObject startingMenu;
     private Button button;
+    public AudioClip gameOverSound;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +19,6 @@ public class GameManager : MonoBehaviour
         button = GetComponent<Button>();
         button.onClick.AddListener(SelectStartingMenu);
         startingMenu.gameObject.SetActive(false);
-
     }
 
     void SelectStartingMenu()
@@ -26,17 +26,19 @@ public class GameManager : MonoBehaviour
         Debug.Log(gameObject.name + " was clicked");
     }
 
+    
     // Restart game by reloading the scene
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-
-
-
-    // Update is called once per frame
-    void Update()
+    // The game will end when the player's lives will end
+    public void GameOver()
     {
-
+        isGameActive = false;
+        AudioSource.PlayClipAtPoint(gameOverSound, transform.position);
+        startingMenu.gameObject.SetActive(true);
     }
+
+    
 }
