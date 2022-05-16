@@ -43,7 +43,14 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
 
         float moveX = Input.GetAxis("Horizontal"); //player moves
-        rb.velocity = new Vector2(moveX * speed, rb.velocity.y);
+        if (!gameManager.gameOver)
+        {
+            rb.velocity = new Vector2(moveX * speed, rb.velocity.y);
+        }
+        if (gameManager.gameOver)
+        {
+            Destroy(gameObject);
+        }
 
         if (moveX > 0 && faceRight)
         {
@@ -59,7 +66,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if(isGrounded == true && gameManager.isGameActive)
+        if(isGrounded == true && !gameManager.gameOver)
         {
             extraJumps = extraJumpValue;
         }
@@ -77,8 +84,12 @@ public class PlayerController : MonoBehaviour
 
     void flip()
     {
-        faceRight = !faceRight;
-        transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+        if (!gameManager.gameOver)
+        {
+            faceRight = !faceRight;
+            transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+        }
+        
 
     }
 

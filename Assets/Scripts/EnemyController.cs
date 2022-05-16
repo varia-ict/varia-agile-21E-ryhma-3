@@ -15,17 +15,21 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        enemyAnim.SetBool("isWalking", true);
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!dead && gameManager.isGameActive)
+        if (!gameManager.gameOver)
         {
+            enemyAnim.SetBool("isWalking", true);
             var directionVector = rightDirectionFlag ? Vector3.right : Vector3.left;
             transform.Translate(directionVector * Time.deltaTime * speed);
+        }
+        if (gameManager.gameOver)
+        {
+            Destroy(gameObject);
         }
 
         if (transform.position.x > rightBound)
@@ -34,7 +38,7 @@ public class EnemyController : MonoBehaviour
         }
         if (transform.position.x < leftBound)
         {
-                Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
 

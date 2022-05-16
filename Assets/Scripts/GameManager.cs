@@ -7,18 +7,21 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public bool isGameActive;
-    public GameObject startingMenu;
+    //public bool isGameActive;
+    public GameObject startMenu;
+    public GameObject restartMenu;
     private Button button;
     public AudioClip gameOverSound;
+    public bool gameOver;
 
     // Start is called before the first frame update
     void Start()
     {
-        isGameActive = true;
+        //isGameActive = true;
+        gameOver = false;
         button = GetComponent<Button>();
         button.onClick.AddListener(SelectStartingMenu);
-        startingMenu.gameObject.SetActive(false);
+        startMenu.gameObject.SetActive(false);
     }
 
     void SelectStartingMenu()
@@ -28,16 +31,16 @@ public class GameManager : MonoBehaviour
 
     
     // Restart game by reloading the scene
-    public void RestartGame()
+    public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     // The game will end when the player's lives will end
     public void GameOver()
     {
-        isGameActive = false;
+        gameOver = true;
         AudioSource.PlayClipAtPoint(gameOverSound, transform.position);
-        startingMenu.gameObject.SetActive(true);
+        restartMenu.gameObject.SetActive(true);
     }
 
     

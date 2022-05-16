@@ -30,6 +30,7 @@ public class CharacterAnimation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         spriteRend = GetComponent<SpriteRenderer>();
         matBlink = Resources.Load("PlayerBlink", typeof(Material)) as Material;
         matDefault = spriteRend.material;
@@ -39,6 +40,10 @@ public class CharacterAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!gameManager.gameOver)
+        {
+            Debug.Log("test");
+        
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
             anim.SetBool("isRunning", true);
@@ -60,7 +65,7 @@ public class CharacterAnimation : MonoBehaviour
                 startAtackTime = DateTimeOffset.Now.ToUnixTimeMilliseconds();
             }
         }
-
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision) //attacking enemies
@@ -90,7 +95,6 @@ public class CharacterAnimation : MonoBehaviour
             
             if(lives <= 0)
             {
-                gameManager.isGameActive = false;
                 gameManager.GameOver();
             }
             else
