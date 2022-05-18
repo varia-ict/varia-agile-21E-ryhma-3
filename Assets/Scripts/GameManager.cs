@@ -7,17 +7,16 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    //public bool isGameActive;
     public GameObject startMenu;
     public GameObject restartMenu;
     private Button button;
     public AudioClip gameOverSound;
     public bool gameOver;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        //isGameActive = true;
         gameOver = false;
         button = GetComponent<Button>();
         button.onClick.AddListener(SelectStartingMenu);
@@ -41,6 +40,11 @@ public class GameManager : MonoBehaviour
         gameOver = true;
         AudioSource.PlayClipAtPoint(gameOverSound, transform.position);
         restartMenu.gameObject.SetActive(true);
+    }
+
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     

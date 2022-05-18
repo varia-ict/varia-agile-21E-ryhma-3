@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "PickUp")
         {
             pickup++;
-            scoreText.text = " x " + pickup;
+            scoreText.text = pickup + " / 12 ";
             AudioSource.PlayClipAtPoint(coinsSound, transform.position);
             Destroy(collision.gameObject);
         }
