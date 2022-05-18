@@ -40,31 +40,30 @@ public class CharacterAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!gameManager.gameOver)
+        if (!gameManager.gameOver)//Player's running animation turns on
         {
-            Debug.Log("test");
-        
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
-        {
-            anim.SetBool("isRunning", true);
-        }
-        else
-        {
-            anim.SetBool("isRunning", false);
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            anim.SetTrigger("jump");
-        }
-        if (Input.GetKey(KeyCode.G))
-        {
-            var time = DateTimeOffset.Now.ToUnixTimeMilliseconds();
-            if(time >= startAtackTime + atackCooldownTime)
+
+            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
             {
-                anim.SetTrigger("Attack");
-                startAtackTime = DateTimeOffset.Now.ToUnixTimeMilliseconds();
+                anim.SetBool("isRunning", true);
             }
-        }
+            else
+            {
+                anim.SetBool("isRunning", false);
+            }
+            if (Input.GetKeyDown(KeyCode.Space))//Player's jumping animation turns on
+            {
+                anim.SetTrigger("jump");
+            }
+            if (Input.GetKey(KeyCode.G))//Player's attacking animation turns on
+            {
+                var time = DateTimeOffset.Now.ToUnixTimeMilliseconds();
+                if (time >= startAtackTime + atackCooldownTime)
+                {
+                    anim.SetTrigger("Attack");
+                    startAtackTime = DateTimeOffset.Now.ToUnixTimeMilliseconds();
+                }
+            }
         }
     }
 
@@ -87,13 +86,13 @@ public class CharacterAnimation : MonoBehaviour
                 AudioSource.PlayClipAtPoint(deathSound, transform.position);
             }
         }
-        else //collides with enemies without attack
+        else //losing the lives if the Player collides with enemies without attack
         {
             lives--;
             spriteRend.material = matBlink;
             livesText.text = " x " + lives;
-            
-            if(lives <= 0)
+
+            if (lives <= 0)
             {
                 gameManager.GameOver();
             }
@@ -104,7 +103,7 @@ public class CharacterAnimation : MonoBehaviour
         }
     }
 
-   
+
     void ResetMaterial()
     {
         spriteRend.material = matDefault;
@@ -120,4 +119,3 @@ public class CharacterAnimation : MonoBehaviour
 
 
 
-   

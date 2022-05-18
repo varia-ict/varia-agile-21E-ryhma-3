@@ -8,7 +8,7 @@ public class EnemyController : MonoBehaviour
     public Animator enemyAnim;
     public float speed = 2;
     private float rightBound = 100;
-    private float leftBound = - 100;
+    private float leftBound = -100;
     bool dead;
     public bool rightDirectionFlag = false;
 

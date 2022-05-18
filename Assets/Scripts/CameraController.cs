@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
- 
+
     public GameObject player;
     private GameManager gameManager;
 
@@ -18,11 +18,11 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!gameManager.gameOver)
+        if (!gameManager.gameOver)//Camera follows the Player
         {
             transform.position = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
         }
-        
+
     }
 
 }

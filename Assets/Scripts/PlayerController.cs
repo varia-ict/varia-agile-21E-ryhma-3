@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Text scoreText;
     public ImageEffectAllowedInSceneView GetImage;
     public AudioClip coinsSound;
+    public GameObject winScreen;
 
 
     public float speed;
@@ -43,7 +44,7 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
 
         float moveX = Input.GetAxis("Horizontal"); //player moves
-        if (!gameManager.gameOver)
+        if (!gameManager.gameOver && isGrounded)
         {
             rb.velocity = new Vector2(moveX * speed, rb.velocity.y);
         }
@@ -61,12 +62,12 @@ public class PlayerController : MonoBehaviour
             flip();
         }
 
-        
+
     }
 
     private void Update()
     {
-        if(isGrounded == true && !gameManager.gameOver)
+        if (isGrounded == true && !gameManager.gameOver)
         {
             extraJumps = extraJumpValue;
         }
@@ -75,25 +76,25 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = Vector2.up * jumpForce;
         }
-       /* else if (Input.GetKeyDown(KeyCode.Space) && extraJumps < 2)
-        {
-            rb.velocity = Vector2.up * jumpForce;
-        }
-       */
+        /* else if (Input.GetKeyDown(KeyCode.Space) && extraJumps < 2)
+         {
+             rb.velocity = Vector2.up * jumpForce;
+         }
+        */
     }
 
     void flip()
     {
-        if (!gameManager.gameOver)
+        if (!gameManager.gameOver)//make the Player looking at the direction he move to
         {
             faceRight = !faceRight;
             transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
         }
-        
+
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) //pick up
+    private void OnTriggerEnter2D(Collider2D collision) //The Player collects pickups with colliding
     {
 
         if (collision.gameObject.tag == "PickUp")
@@ -102,6 +103,11 @@ public class PlayerController : MonoBehaviour
             scoreText.text = pickup + " / 12 ";
             AudioSource.PlayClipAtPoint(coinsSound, transform.position);
             Destroy(collision.gameObject);
+        }
+
+        if (pickup == 12)
+        {
+            winScreen.gameObject.SetActive(true);
         }
     }
 }

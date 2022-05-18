@@ -25,13 +25,13 @@ public class SpawnManager : MonoBehaviour
     void SpawnRandomEnemies()
     {
         int enemiesIndex = Random.Range(0, enemiesPrefabs.Length);
-        Vector3 spawnPos = new Vector3(Random.Range( spawnRangeX2, spawnRangeX1), spawnPosY);
+        Vector3 spawnPos = new Vector3(Random.Range(spawnRangeX2, spawnRangeX1), spawnPosY);
 
         if (!gameManager.gameOver)
         {
             Instantiate(enemiesPrefabs[enemiesIndex], spawnPos, enemiesPrefabs[enemiesIndex].transform.rotation);
         }
-        
+
 
     }
 }

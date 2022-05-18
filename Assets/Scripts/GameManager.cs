@@ -9,26 +9,25 @@ public class GameManager : MonoBehaviour
 {
     public GameObject startMenu;
     public GameObject restartMenu;
-    private Button button;
     public AudioClip gameOverSound;
     public bool gameOver;
-    
+
+
 
     // Start is called before the first frame update
     void Start()
     {
+
+
+    }
+
+    public void StartGame()//start the game with the clicking on button start
+    {
         gameOver = false;
-        button = GetComponent<Button>();
-        button.onClick.AddListener(SelectStartingMenu);
         startMenu.gameObject.SetActive(false);
     }
 
-    void SelectStartingMenu()
-    {
-        Debug.Log(gameObject.name + " was clicked");
-    }
 
-    
     // Restart game by reloading the scene
     public void RestartLevel()
     {
@@ -42,10 +41,10 @@ public class GameManager : MonoBehaviour
         restartMenu.gameObject.SetActive(true);
     }
 
-    public void NextLevel()
+    public void NextLevel()//next level loads after the Player collects all the pickups
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    
+
 }
