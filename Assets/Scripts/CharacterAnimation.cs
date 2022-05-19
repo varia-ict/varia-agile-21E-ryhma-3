@@ -40,7 +40,7 @@ public class CharacterAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameManager.playerActive)//Player's running animation turns on
+        if (!gameManager.gameOver)//Player's running animation turns on
         {
 
             if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
@@ -80,12 +80,15 @@ public class CharacterAnimation : MonoBehaviour
         if (startAtackTime - time > -atackDurationTime)
         {
             var enemyController = collision.gameObject.GetComponent<EnemyController>();
-            var banditController = collision.gameObject.GetComponent<BanditController>();
+
             if (enemyController != null)
             {
                 enemyController.KillWithAnimation();
                 AudioSource.PlayClipAtPoint(deathSound, transform.position);
             }
+
+            var banditController = collision.gameObject.GetComponent<BanditController>();
+
             if (banditController != null)
             {
                 banditController.KillWithAnimation();
@@ -99,7 +102,7 @@ public class CharacterAnimation : MonoBehaviour
             lives--;
             spriteRend.material = matBlink;
             livesText.text = " x " + lives;
-            
+
             if (lives <= 0)
             {
                 gameManager.GameOver();

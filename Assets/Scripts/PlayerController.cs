@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck; //checking the ground
     public LayerMask whatIsGround;
     [SerializeField] private Sprite[] pickupSprites;
-    [SerializeField] private Text scoreText;
+    [SerializeField] public Text scoreText;
     public ImageEffectAllowedInSceneView GetImage;
     public AudioClip coinsSound;
     public GameObject winScreen;
@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     private int extraJumps;
     public int extraJumpValue;
     private int pickup = 0;
+    public int score;
 
     // Start is called before the first frame update
     void Start()
@@ -41,30 +42,26 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (gameManager.playerActive)
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
+
+        float moveX = Input.GetAxis("Horizontal"); //player moves
+        if (!gameManager.gameOver && isGrounded)
         {
-            isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
-
-            float moveX = Input.GetAxis("Horizontal"); //player moves
-            if (isGrounded)
-            {
-                rb.velocity = new Vector2(moveX * speed, rb.velocity.y);
-            }
-            if (gameManager.gameOver)
-            {
-                Destroy(gameObject);
-            }
-
-            if (moveX > 0 && faceRight)
-            {
-                flip();
-            }
-            if (moveX < 0 && !faceRight)
-            {
-                flip();
-            }
+            rb.velocity = new Vector2(moveX * speed, rb.velocity.y);
+        }
+        if (gameManager.gameOver)
+        {
+            Destroy(gameObject);
         }
 
+        if (moveX > 0 && faceRight)
+        {
+            flip();
+        }
+        if (moveX < 0 && !faceRight)
+        {
+            flip();
+        }
 
     }
 
@@ -103,12 +100,12 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "PickUp")
         {
             pickup++;
-            scoreText.text = pickup + " / 12 ";
+            scoreText.text = pickup + " / " + score;
             AudioSource.PlayClipAtPoint(coinsSound, transform.position);
             Destroy(collision.gameObject);
         }
 
-        if (pickup == 12)
+        if (pickup == score)
         {
             winScreen.gameObject.SetActive(true);
         }
