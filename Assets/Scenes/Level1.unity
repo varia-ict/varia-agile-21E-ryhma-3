@@ -9910,7 +9910,7 @@ MonoBehaviour:
   startMenu: {fileID: 362759298}
   restartMenu: {fileID: 1825281589}
   gameOverSound: {fileID: 8300000, guid: 52fc07685c4be14429ef35552e317756, type: 3}
-  isGameActive: 0
+  gameOver: 0
 --- !u!4 &1576274581
 Transform:
   m_ObjectHideFlags: 0
@@ -10810,7 +10810,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 201, y: -122}
+  m_AnchoredPosition: {x: 184, y: -130}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2007892182
@@ -10846,7 +10846,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'x '
+  m_Text: x 3
 --- !u!222 &2007892183
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11195,6 +11195,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 848173724210083985, guid: 3dd3b8f4282b141ec9eedfc1135233df, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5f453216d3ff442dfb9044b98e021067, type: 3}
     - target: {fileID: 848173724210083993, guid: 3dd3b8f4282b141ec9eedfc1135233df, type: 3}
       propertyPath: m_Name
       value: Player

@@ -3343,7 +3343,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -732, y: 357}
+  m_AnchoredPosition: {x: -722, y: 357}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1051342878
@@ -3379,7 +3379,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'x '
+  m_Text: x  3
 --- !u!222 &1051342879
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10844,10 +10844,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0f6dbd2e0512460cb5d475a136a1018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesPrefabs:
-  - {fileID: 595410592906088966, guid: 139a5d8bbe1fc40949509d764afc2135, type: 3}
-  - {fileID: 6724167421943471745, guid: aaf5266561c5b43d0ab471c4429487da, type: 3}
-  - {fileID: 2386593298015611074, guid: 664a6df5c0501494283a0f9a641fa156, type: 3}
+  enemiesPrefabs: []
   spawnRangeX1: 93
   spawnRangeX2: 18
   spawnPosY: -2.74
@@ -11644,6 +11641,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 848173724210083985, guid: 3dd3b8f4282b141ec9eedfc1135233df, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d4c34f4f2a3a3344bb084659672375b5, type: 3}
     - target: {fileID: 848173724210083993, guid: 3dd3b8f4282b141ec9eedfc1135233df, type: 3}
       propertyPath: m_Name
       value: Player

@@ -4647,7 +4647,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ' x '
+  m_Text: ' x 3'
 --- !u!222 &736061901
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4734,6 +4734,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 888807060}
   m_CullTransparentMesh: 1
+--- !u!1 &1030639907
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1030639909}
+  - component: {fileID: 1030639908}
+  m_Layer: 0
+  m_Name: Spawn Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1030639908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030639907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0f6dbd2e0512460cb5d475a136a1018, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemiesPrefabs:
+  - {fileID: 154591919455914995, guid: 035f1edc7338249d6a8992671d297154, type: 3}
+  - {fileID: 9105366708916201315, guid: c59489d414cfa4c7889e78e159f70b6e, type: 3}
+  - {fileID: 5270690089945516665, guid: af5b89c292de843a79ec4aab3afd1431, type: 3}
+  spawnRangeX1: 93
+  spawnRangeX2: 18
+  spawnPosY: 0
+--- !u!4 &1030639909
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030639907}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -32.794624, y: -0.8204547, z: -0.29357058}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1141587808
 GameObject:
   m_ObjectHideFlags: 0
@@ -5998,6 +6048,10 @@ PrefabInstance:
       propertyPath: Loop
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 848173724210083985, guid: 3dd3b8f4282b141ec9eedfc1135233df, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9653c167f1ee3f84da71107948227942, type: 3}
     - target: {fileID: 848173724210083993, guid: 3dd3b8f4282b141ec9eedfc1135233df, type: 3}
       propertyPath: m_Name
       value: Player
