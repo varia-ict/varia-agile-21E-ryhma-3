@@ -11,18 +11,19 @@ public class GameManager : MonoBehaviour
     public GameObject restartMenu;
     public AudioClip gameOverSound;
     public bool gameOver;
-
+    public bool playerActive;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerActive = false;
     }
 
     public void StartGame()//start the game with the clicking on button start
     {
         gameOver = false;
+        playerActive = true;
         startMenu.gameObject.SetActive(false);
     }
 

@@ -41,25 +41,28 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
+        if (gameManager.playerActive)
+        {
+            isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
 
-        float moveX = Input.GetAxis("Horizontal"); //player moves
-        if (!gameManager.gameOver && isGrounded)
-        {
-            rb.velocity = new Vector2(moveX * speed, rb.velocity.y);
-        }
-        if (gameManager.gameOver)
-        {
-            Destroy(gameObject);
-        }
+            float moveX = Input.GetAxis("Horizontal"); //player moves
+            if (isGrounded)
+            {
+                rb.velocity = new Vector2(moveX * speed, rb.velocity.y);
+            }
+            if (gameManager.gameOver)
+            {
+                Destroy(gameObject);
+            }
 
-        if (moveX > 0 && faceRight)
-        {
-            flip();
-        }
-        if (moveX < 0 && !faceRight)
-        {
-            flip();
+            if (moveX > 0 && faceRight)
+            {
+                flip();
+            }
+            if (moveX < 0 && !faceRight)
+            {
+                flip();
+            }
         }
 
 

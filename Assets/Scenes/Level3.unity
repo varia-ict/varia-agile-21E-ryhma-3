@@ -4764,9 +4764,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesPrefabs:
-  - {fileID: 154591919455914995, guid: 035f1edc7338249d6a8992671d297154, type: 3}
-  - {fileID: 9105366708916201315, guid: c59489d414cfa4c7889e78e159f70b6e, type: 3}
-  - {fileID: 5270690089945516665, guid: af5b89c292de843a79ec4aab3afd1431, type: 3}
+  - {fileID: 5277025042469495749, guid: e130e8e4ef9424f4d84056486d6f3ce8, type: 3}
+  - {fileID: 2617029199754346379, guid: cbea937088a6b4333b1ed5ca7b9a66ed, type: 3}
   spawnRangeX1: 93
   spawnRangeX2: 18
   spawnPosY: 0
@@ -5890,6 +5889,7 @@ MonoBehaviour:
   restartMenu: {fileID: 292102470}
   gameOverSound: {fileID: 8300000, guid: 52fc07685c4be14429ef35552e317756, type: 3}
   gameOver: 0
+  playerActive: 0
 --- !u!4 &1731307859
 Transform:
   m_ObjectHideFlags: 0
@@ -6077,6 +6077,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2064004609}
     - target: {fileID: 848173724210083995, guid: 3dd3b8f4282b141ec9eedfc1135233df, type: 3}
+      propertyPath: winScreen
+      value: 
+      objectReference: {fileID: 1618602670}
+    - target: {fileID: 848173724210083995, guid: 3dd3b8f4282b141ec9eedfc1135233df, type: 3}
       propertyPath: pickupSprites.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -6126,6 +6130,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 848173724210083999, guid: 3dd3b8f4282b141ec9eedfc1135233df, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 848173725620387971, guid: 3dd3b8f4282b141ec9eedfc1135233df, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

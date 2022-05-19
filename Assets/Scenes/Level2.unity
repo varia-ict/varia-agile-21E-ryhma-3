@@ -4582,6 +4582,7 @@ MonoBehaviour:
   restartMenu: {fileID: 717715800}
   gameOverSound: {fileID: 8300000, guid: 52fc07685c4be14429ef35552e317756, type: 3}
   gameOver: 0
+  playerActive: 0
 --- !u!4 &1287616192
 Transform:
   m_ObjectHideFlags: 0
@@ -10844,7 +10845,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0f6dbd2e0512460cb5d475a136a1018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesPrefabs: []
+  enemiesPrefabs:
+  - {fileID: 5270690089945516665, guid: af5b89c292de843a79ec4aab3afd1431, type: 3}
+  - {fileID: 9105366708916201315, guid: c59489d414cfa4c7889e78e159f70b6e, type: 3}
+  - {fileID: 154591919455914995, guid: 035f1edc7338249d6a8992671d297154, type: 3}
   spawnRangeX1: 93
   spawnRangeX2: 18
   spawnPosY: -2.74
