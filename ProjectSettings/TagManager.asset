@@ -49,6 +49,9 @@ TagManager:
   - name: Floor
     uniqueID: 1977954273
     locked: 0
+  - name: Map Assets
+    uniqueID: 2536653363
+    locked: 0
   - name: Objects
     uniqueID: 641753165
     locked: 0
