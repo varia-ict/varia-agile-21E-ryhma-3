@@ -40,7 +40,7 @@ public class CharacterAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!gameManager.gameOver)//Player's running animation turns on
+        if (!gameManager.gameOver)//play the Player's running animation 
         {
 
             if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
@@ -51,11 +51,11 @@ public class CharacterAnimation : MonoBehaviour
             {
                 anim.SetBool("isRunning", false);
             }
-            if (Input.GetKeyDown(KeyCode.Space))//Player's jumping animation turns on
+            if (Input.GetKeyDown(KeyCode.Space))//play the Player's jumping animation
             {
                 anim.SetTrigger("jump");
             }
-            if (Input.GetKey(KeyCode.G))//Player's attacking animation turns on
+            if (Input.GetKey(KeyCode.G))//play the Player's attacking animation
             {
                 var time = DateTimeOffset.Now.ToUnixTimeMilliseconds();
                 if (time >= startAtackTime + atackCooldownTime)
@@ -67,7 +67,7 @@ public class CharacterAnimation : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) //attacking enemies
+    private void OnTriggerEnter2D(Collider2D collision) //Player attacks the enemies
     {
 
         Debug.Log("Attack");
@@ -115,7 +115,7 @@ public class CharacterAnimation : MonoBehaviour
     }
 
 
-    void ResetMaterial()
+    void ResetMaterial()//make the Player blink when he lost the live
     {
         spriteRend.material = matDefault;
     }

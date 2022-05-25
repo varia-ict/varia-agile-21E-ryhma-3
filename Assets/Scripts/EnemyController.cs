@@ -21,7 +21,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!gameManager.gameOver)
+        if (!gameManager.gameOver)//make the enemies move if the game is active
         {
             enemyAnim.SetBool("isWalking", true);
             var directionVector = rightDirectionFlag ? Vector3.right : Vector3.left;
@@ -31,7 +31,7 @@ public class EnemyController : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
+        //destroy the enemies if they are not in the boards
         if (transform.position.x > rightBound)
         {
             Destroy(gameObject);
@@ -42,7 +42,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void KillWithAnimation() //death animation
+    public void KillWithAnimation() //play the enemie's death animation if it's dead
     {
         if (!dead)
         {

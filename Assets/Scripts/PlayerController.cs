@@ -46,8 +46,8 @@ public class PlayerController : MonoBehaviour
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
 
-        float moveX = Input.GetAxis("Horizontal"); //player moves
-        if (!gameManager.gameOver && isGrounded)
+        float moveX = Input.GetAxis("Horizontal");
+        if (!gameManager.gameOver && isGrounded)//make the Player move if the game is active
         {
             rb.velocity = new Vector2(moveX * speed, rb.velocity.y);
         }
@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (moveX > 0 && faceRight)
+        if (moveX > 0 && faceRight)//make the Player look to the direction he moves to
         {
             flip();
         }
@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
             extraJumps = extraJumpValue;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) /* && extraJumps > 0 */&& isGrounded) //player jumps
+        if (Input.GetKeyDown(KeyCode.Space) /* && extraJumps > 0 */&& isGrounded) //make the Player jump
         {
             rb.velocity = Vector2.up * jumpForce;
         }
@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
 
     void flip()
     {
-        if (!gameManager.gameOver)//make the Player looking at the direction he move to
+        if (!gameManager.gameOver)//make the Player looking at the direction he moves to
         {
             faceRight = !faceRight;
             transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
@@ -110,12 +110,12 @@ public class PlayerController : MonoBehaviour
         if (pickup == score)
         {
             //Check to see if it is the last scene of the game. If yes then show victory screen, if no then show Next Level button
-            if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName ("Level2"))
+            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Level2"))
             {
                 victoryScreen.gameObject.SetActive(true);
             }
             else
-            winScreen.gameObject.SetActive(true);
+                winScreen.gameObject.SetActive(true);
         }
     }
 }
