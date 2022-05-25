@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public ImageEffectAllowedInSceneView GetImage;
     public AudioClip coinsSound;
     public GameObject winScreen;
+    public GameObject victoryScreen;
 
 
     public float speed;
@@ -107,6 +109,12 @@ public class PlayerController : MonoBehaviour
 
         if (pickup == score)
         {
+            //Check to see if it is the last scene of the game. If yes then show victory screen, if no then show Next Level button
+            if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName ("Level2"))
+            {
+                victoryScreen.gameObject.SetActive(true);
+            }
+            else
             winScreen.gameObject.SetActive(true);
         }
     }

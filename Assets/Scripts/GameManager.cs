@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject restartMenu;
     public AudioClip gameOverSound;
     public bool gameOver;
+    public GameObject victoryScreen;
 
 
 
@@ -35,8 +36,19 @@ public class GameManager : MonoBehaviour
 
     public void NextLevel()//next level loads after the Player collects all the pickups
     {
+        //if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName ("Level2"))
+        //{
+        //    victoryScreen.SetTrigger("Show");
+        //}
+        //else
         gameOver = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void BackToTheMainMenu()
+    {
+        victoryScreen.gameObject.SetActive(false);
+        SceneManager.LoadScene("StartMenu");
     }
 
 
