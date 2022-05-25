@@ -56,6 +56,7 @@ public class BanditController : MonoBehaviour
     {
         if (!dead)
         {
+            speed = 0;
             dead = true;
             Debug.Log("startDeath animation");
             anim.SetBool("death", true);
