@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    public void BackToTheMainMenu()
+    public void BackToTheMainMenu()//return to the main menu
     {
         victoryScreen.gameObject.SetActive(false);
         SceneManager.LoadScene("StartMenu");
